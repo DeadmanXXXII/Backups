@@ -139,4 +139,82 @@ header {
 .newsletter input[type="email"] {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #222;
+    color: #e0e0e0;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+    background: #0056b3;
+}
+
+/* Contact Section Styles */
+.contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+
+/* Medium Devices (Tablets) */
+@media (max-width: 768px) {
+    .header-content {
+        font-size: 1.5em;
+    }
+
+    .product-item {
+        width: calc(50% - 20px);
+    }
+
+    .carousel-item {
+        min-width: 150px;
+    }
+}
+
+/* Small Devices (Phones) */
+@media (max-width: 576px) {
+    .header-content {
+        font-size: 1.2em;
+    }
+
+    .product-item {
+        width: calc(100% - 20px);
+    }
+
+    .carousel-item {
+        min-width: 100px;
+    }
+
+    .about-content li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-content li img {
+        margin-bottom: 10px;
+    }
+}
