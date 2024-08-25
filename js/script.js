@@ -1,6 +1,6 @@
 // script.js
 
-// Basic carousel functionality
+// Example for a basic carousel functionality
 document.addEventListener('DOMContentLoaded', () => {
     const carouselWrapper = document.querySelector('.carousel-wrapper');
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isMouseDown) return;
             e.preventDefault();
             const x = e.pageX - carouselWrapper.offsetLeft;
-            const walk = (x - startX) * 3; // scroll fast
+            const walk = (x - startX) * 3; // scroll-fast
             carouselWrapper.scrollLeft = scrollLeft - walk;
         });
     }
