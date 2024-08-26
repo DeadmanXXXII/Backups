@@ -1,34 +1,38 @@
-// script.js
-
-// Example for a basic carousel functionality
-document.addEventListener('DOMContentLoaded', () => {
+// Smooth Scrolling for Carousel
+document.addEventListener('DOMContentLoaded', function () {
     const carouselWrapper = document.querySelector('.carousel-wrapper');
+    const scrollAmount = 300; // Adjust this for the amount to scroll per click
 
-    if (carouselWrapper) {
-        let isMouseDown = false;
-        let startX;
-        let scrollLeft;
+    // Automatically scroll the carousel every 3 seconds
+    setInterval(function () {
+        carouselWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }, 3000);
 
-        carouselWrapper.addEventListener('mousedown', (e) => {
-            isMouseDown = true;
-            startX = e.pageX - carouselWrapper.offsetLeft;
-            scrollLeft = carouselWrapper.scrollLeft;
-        });
+    // Reset the scroll position to the start if it reaches the end
+    carouselWrapper.addEventListener('scroll', function () {
+        if (carouselWrapper.scrollLeft + carouselWrapper.clientWidth >= carouselWrapper.scrollWidth) {
+            carouselWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+    });
+});
 
-        carouselWrapper.addEventListener('mouseleave', () => {
-            isMouseDown = false;
-        });
+// Newsletter Form Validation
+document.querySelector('.newsletter form').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        carouselWrapper.addEventListener('mouseup', () => {
-            isMouseDown = false;
-        });
+    const emailInput = document.querySelector('input[type="email"]');
+    const emailValue = emailInput.value.trim();
 
-        carouselWrapper.addEventListener('mousemove', (e) => {
-            if (!isMouseDown) return;
-            e.preventDefault();
-            const x = e.pageX - carouselWrapper.offsetLeft;
-            const walk = (x - startX) * 3; // scroll-fast
-            carouselWrapper.scrollLeft = scrollLeft - walk;
-        });
+    if (validateEmail(emailValue)) {
+        alert('Thank you for subscribing!');
+        emailInput.value = ''; // Clear the input field
+    } else {
+        alert('Please enter a valid email address.');
     }
 });
+
+// Email Validation Function
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
